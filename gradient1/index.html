@@ -59,7 +59,7 @@
         }
 
         #nav ul li a button {
-            background-color: rgb(116, 89, 71);
+            background-color: rgba(255, 56, 222, 0.397);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -69,7 +69,7 @@
 
         #nav ul li a button:hover {
             background-color: white;
-            color: rgb(116, 89, 71);
+            color: rgba(255, 56, 222, 0.397);
         }
 
         #nav ul li a button:focus {
@@ -92,7 +92,7 @@
         }
 
         #nav ul li ul li a button {
-            background-color: rgb(116, 89, 71);
+            background-color: rgba(255, 56, 222, 0.397);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -104,12 +104,84 @@
 
         #nav ul li ul li a button:hover {
             background-color: white;
-            color: rgb(116, 89, 71);
+            color: rgba(255, 56, 222, 0.397);
         }
 
         #nav ul li ul li a button:focus {
             outline: none;
         }
+
+        keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #banner p {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        #banner p.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #banner p strong {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        #banner p strong.appear-strong {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #banner img {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            margin: 0 15px; /* Add spacing between images */
+        }
+
+        #banner img.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up-element {
+            opacity: 0; /* Ensure elements are initially hidden */
+            animation: fadeUp 1s ease-out forwards; /* Keep the final state after animation */
+        }
+
+        .fade-up-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-up-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .fade-up-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .fade-up-delay-4 {
+            animation-delay: 0.8s;
+        }
+
     </style>
 </head>
 <body class="homepage is-preload">
@@ -149,6 +221,18 @@
                 </div>
             </nav>
         </div>
+
+        <section id="banner">
+            <header>
+                <h2>Our <strong>Values</strong></h2>
+                <p>Our commitment to <strong>eco-friendly</strong> materials and processes ensures that your beautiful new floors are as <strong>kind to the planet</strong> as they are your home.</p>
+                <p>We pride ourselves on delivering top-notch <strong>craftsmanship</strong> and exceptional <strong>customer service,</strong> creating a welcoming and satisfying experience for <strong>every client.</strong></p>
+                <p>Trust us to enhance your space with floors that are not only <strong>stunning</strong> but also <strong>sustainably sourced</strong> and <strong>expertly installed.</p>
+                </header>
+                    <img src="images/save-the-world.png" alt="Eco Friendly" style="width: 70px; height: auto; margin-bottom: 10px;">
+                    <img src="images/customer-service.png" alt="Customer Service" style="width: 70px; height: auto; margin-bottom: 10px;">
+                    <img src="images/expert.png" alt="Expert" style="width: 70px; height: auto; margin-bottom: 10px;">	
+        </section>
 
         <!-- Banner -->
         <section id="banner">
@@ -249,6 +333,63 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var paragraphs = document.querySelectorAll('#banner p');
+                var images = document.querySelectorAll('#banner img');
+            
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            paragraphs.forEach(function(p, index) {
+                                var strongTags = p.querySelectorAll('strong');
+                                strongTags.forEach(function(strong, strongIndex) {
+                                    setTimeout(function() {
+                                        strong.classList.add('appear-strong');
+                                    }, index * 100); // Reduced delay for strong tags
+                                });
+            
+                                setTimeout(function() {
+                                    p.classList.add('appear');
+                                }, index * 500); // Reduced delay for the rest of the text
+                            });
+            
+                            images.forEach(function(img, index) {
+                                setTimeout(function() {
+                                    img.classList.add('appear');
+                                }, 1000 + index * 300); // Delay for images to appear after paragraphs
+                            });
+            
+                            observer.disconnect(); // Stop observing after the animation has started
+                        }
+                    });
+                }, {
+                    threshold: 0.1 // Adjust as needed (0.1 means 10% of the banner is visible)
+                });
+            
+                observer.observe(document.querySelector('#banner'));
+            });
+            </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var fadeElements = document.querySelectorAll('.fade-up-element');
+                
+                    var observer = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('appear');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        threshold: 0.1 // Adjust as needed
+                    });
+                
+                    fadeElements.forEach(function(el) {
+                        observer.observe(el);
+                    });
+                });
+                </script>
 
     </div>
 </body>

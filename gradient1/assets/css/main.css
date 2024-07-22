@@ -135,7 +135,7 @@ input, select, textarea {
 
 	strong, b {
 		font-weight: 400;
-		color: rgb(116,89,71);
+		color: rgba(255, 56, 222, 0.397);
 	}
 
 	em, i {
@@ -144,7 +144,7 @@ input, select, textarea {
 
 	a {
 		color: inherit;
-		border-bottom: solid 1px black;
+		border-bottom: none;
 		text-decoration: none;
 		-moz-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
 		-webkit-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
@@ -153,7 +153,7 @@ input, select, textarea {
 	}
 
 		a:hover {
-			color: rgb(116,89,71);
+			color: rgba(255, 56, 222, 0.397);
 			border-bottom-color: transparent;
 		}
 
@@ -217,7 +217,7 @@ input, select, textarea {
 		}
 
 	.timestamp {
-		color: rgb(116,89,71);
+		color: rgba(255, 56, 222, 0.397);
 		font-size: 0.8em;
 	}
 
@@ -1867,7 +1867,7 @@ input, select, textarea {
 	}
 
 		ul.divided li {
-			border-top: solid 1px rgb(116,89,71);
+			border-top: solid 1px rgba(255, 56, 222, 0.397);
 			padding-top: 1.5em;
 			margin-top: 1.5em;
 			padding-left: 0;
@@ -1890,7 +1890,7 @@ input, select, textarea {
 
 		ul.menu li {
 			display: inline-block;
-			border-left: solid 1px rgb(116,89,71);
+			border-left: solid 1px rgba(255, 56, 222, 0.397);
 			padding-left: 1.25em;
 			margin-left: 1.25em;
 		}
@@ -1905,7 +1905,7 @@ input, select, textarea {
 
 	ul.icons {
 		position: relative;
-		background: rgb(116,89,71);
+		background: rgba(255, 56, 222, 0.397);
 		border-radius: 4em;
 		display: inline-block;
 		padding: 0.35em 0.75em 0.35em 0.75em;
@@ -1940,7 +1940,7 @@ input, select, textarea {
 	form label {
 		display: block;
 		font-weight: 400;
-		color: rgb(116,89,71);
+		color: rgba(255, 56, 222, 0.397);
 		margin: 0 0 1em 0;
 	}
 
@@ -1969,7 +1969,7 @@ input, select, textarea {
 		form select:focus,
 		form textarea:focus {
 			background: #fff;
-			border-color: rgb(116,89,71);
+			border-color: rgba(255, 56, 222, 0.397);
 		}
 
 	form input[type="text"],
@@ -2052,7 +2052,7 @@ input, select, textarea {
 	.button {
 		position: relative;
 		display: inline-block;
-		background: rgb(116,89,71);
+		background: rgba(255, 56, 222, 0.397);
 		color: white;
 		text-align: center;
 		border-radius: 0.5em;
@@ -2073,7 +2073,7 @@ input, select, textarea {
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			color: rgb(116,89,71);
+			color: rgba(255, 56, 222, 0.397);
 			background: white;
 		}
 
@@ -2082,7 +2082,7 @@ input, select, textarea {
 		input[type="reset"].alt,
 		button.alt,
 		.button.alt {
-			background: rgb(116,89,71);
+			background: rgba(255, 56, 222, 0.397);
 		}
 
 			input[type="button"].alt:hover,
@@ -2192,21 +2192,17 @@ input, select, textarea {
     height: 30%; /* Adjust the height of the gradient as needed */
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
     pointer-events: none; /* Ensure the gradient does not interfere with interaction */
-}
-
-#header:before {
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
+    z-index: 0;
 }
 
 #header .inner {
     position: relative;
     z-index: 1;
     margin: 0;
-    display: inline-block;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 #header header {
@@ -2263,7 +2259,7 @@ body.homepage #header h1 {
     font-size: 6em;
 }
 
-body.homepage #header:after {
+body.homepage #header:before {
     content: '';
     background: white;
     display: block;
@@ -2273,17 +2269,11 @@ body.homepage #header:after {
     width: 100%;
     height: 100%;
     opacity: 0;
-    -moz-transition: opacity 2.5s ease-in-out;
-    -webkit-transition: opacity 2.5s ease-in-out;
-    -ms-transition: opacity 2.5s ease-in-out;
     transition: opacity 2.5s ease-in-out;
-    -moz-transition-delay: 0.5s;
-    -webkit-transition-delay: 0.5s;
-    -ms-transition-delay: 0.5s;
     transition-delay: 0.5s;
 }
 
-body.homepage.is-preload #header:after {
+body.homepage.is-preload #header:before {
     opacity: 1;
 }
 
@@ -2346,7 +2336,7 @@ body.homepage.is-preload #header:after {
 			}
 
 				#nav > ul > li.active {
-					border-color: rgb(116,89,71);
+					border-color: rgba(255, 56, 222, 0.397);
 				}
 
 				#nav > ul > li > a, #nav > ul > li > span {
@@ -2377,7 +2367,7 @@ body.homepage.is-preload #header:after {
 
 		.dropotron li {
 			border-top: solid 1px rgba(128, 128, 128, 0.2);
-			color: rgb(116,89,71);
+			color: rgba(255, 56, 222, 0.397);
 			padding-left: 0;
 		}
 
@@ -2538,7 +2528,7 @@ body.homepage.is-preload #header:after {
 				width: 6em;
 				height: 6em;
 				border-radius: 100%;
-				background-color: rgba(116,89,71, 0.5);
+				background-color: rgba(255, 56, 222, 0.7);
 				position: absolute;
 				top: 50%;
 				margin-top: -3em;
@@ -2561,7 +2551,7 @@ body.homepage.is-preload #header:after {
 			}
 
 			.carousel .forward:hover:before, .carousel .backward:hover:before {
-				background-color: rgb(116,89,71);
+				background-color: rgba(255, 56, 222, 0.397);
 			}
 
 		.carousel .forward {
@@ -2944,7 +2934,7 @@ body.homepage.is-preload #header:after {
 						position: absolute;
 						left: 50%;
 						margin-left: -40px;
-						background: rgb(116,89,71);
+						background: rgba(255, 56, 222, 0.397);
 						border-top: 0;
 						border-radius: 0 0 0.35em 0.35em;
 					}
