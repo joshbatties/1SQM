@@ -1,93 +1,183 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Services - JPC Timber</title>
+        <title>Services - 1SQM</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style>
-			#footer {
-				background-color: black;
-				color: white;
-				padding: 20px 0;
-				text-align: center;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				position: relative;
-			}
-	
-			.footer-logo {
-				max-width: 100px; /* Adjust this size as needed */
-				margin-right: 20px; /* Space between logo and text */
-			}
-	
-			.footer-text {
-				margin: 0;
-				padding: 10px 20px;
-				border-top: 1px solid white;
-				text-align: center;
-			}
-		</style>
+        <style>
+            #footer {
+                background-color: black;
+                color: white;
+                padding: 20px 0;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+
+            .footer-logo {
+                max-width: 100px; /* Adjust this size as needed */
+                margin-right: 20px; /* Space between logo and text */
+            }
+
+            .footer-text {
+                margin: 0;
+                padding: 10px 20px;
+                border-top: 1px solid white;
+                text-align: center;
+            }
+
+            .image-collage {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: 20px 0;
+            }
+
+            .image-collage img {
+                flex: 1 1 calc(33.333% - 10px);
+                max-width: calc(33.333% - 10px);
+                height: auto;
+                margin: 5px;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 3s ease, transform 3s ease;
+                object-fit: contain;
+            }
+
+            .image-collage img.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+			#banner p {
+    text-align: center;
+}
+        </style>
     </head>
     <body class="is-preload">
         <div id="page-wrapper">
-
             <!-- Header -->
             <div id="header">
                 <div class="inner">
                     <header>
-                        <h1><a href="index.html" id="logo">JPC Timber</a></h1>
-						<img src="images/jpc_logo_white.png" alt="Example Image">
-                        <p>Shop our range.</p>
+                        <h1><a href="index.html" id="logo">One Square Metre</a></h1>
                     </header>
                 </div>
 
-            <!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html">About us</a></li>
-								<li><a href="shop.html">Shop</a></li>
-								<li>
-									<a href="services.html">Services</a>
-									<ul>
-										<li><a href="installation.html">Installation</a></li>
-										<li><a href="finish.html">Sand & Finish</a></li>
-										<li><a href="maintenance.html">Maintenance & Care</a></li>
-									</ul>
-								</li>
-								<li><a href="quotes.html">Quotes</a></li>
-								<li><a href="contact.html">Contact us</a></li>
-							</ul>
-						</nav>
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li>
+                            <a href="services.html">Services</a>
+                            <ul>
+                                <li><a href="installation.html">Installation</a></li>
+                                <li><a href="finish.html">Sand & Finish</a></li>
+                                <li><a href="maintenance.html">Maintenance & Care</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact us</a></li>
+                    </ul>
+                </nav>
+            </div>
 
+			<section id="banner">
+                <header>
+                    <h2><strong>Maintenance & Care</strong></h2>
+                    <p>We know your floors are a valuable investment, and we want to ensure they last a lifetime. <br> Timber is a beautiful, natural product that can age gracefully with proper care. <br> At JPC Timber, we offer comprehensive maintenance and care packages designed to preserve the longevity and luxury of your timber floors. <br> Our services include professional wash and buff, top-notch maintenance and cleaning products, sanding, staining, polishing, and refurbishing old flooring. <br>Trust us to keep your floors looking their best, retaining their value and beauty for years to come.</p>
+                </header>
+				<!-- Button Section -->
+				<div class="button-section">
+					<a href="contact.html" class="button">Get a quote</a>
 				</div>
+            </section>
+
+			<section id="banner">
+				<p>Looking for inspiration?</p>
+                <header>
+                    <h2>Browse some of our <strong>favourite</strong> projects.</h2>
+                    </header>
+            </section>
 
 
+            <!-- Image Collage Section -->
+									<div class="image-collage" id="image-collage">
+										<img src="images/timber8.jpg" alt="Image 1">
+										<img src="images/timber3.webp" alt="Image 1">
+										<img src="images/timber5.jpg" alt="Image 1">
+										<img src="images/timber6.jpg" alt="Image 1">
+										<img src="images/timber7.jpg" alt="Image 1">
+										<img src="images/flooring1.jpg" alt="Image 1">
+										<img src="images/timber9.jpg" alt="Image 1">
+										<img src="images/timber11.jpg" alt="Image 1">
+										<img src="images/timber12.jpg" alt="Image 1">
+										<img src="images/timber13.jpg" alt="Image 1">
+										<img src="images/timber16.webp" alt="Image 1">
+										<img src="images/timber15.webp" alt="Image 1">
+										<img src="images/timber14.jpg" alt="Image 1">
+										<img src="images/timber17.jpg" alt="Image 1">
+										<img src="images/timber18.jpg" alt="Image 1">
+										<img src="images/timber19.jpg" alt="Image 1">
+										<img src="images/timber20.jpg" alt="Image 1">
+										<img src="images/timber4.jpg" alt="Image 1">
+									</div>
 
+            <!-- Footer -->
+            <div id="footer">
+                <img src="images/jpc_logo_white.png" alt="Logo" class="footer-logo">
+                <p class="footer-text">
+                    In the spirit of reconciliation, JPC Timber acknowledges the Traditional Custodians of Country throughout Australia and their connections to land, sea and community. <br>We pay our respect to their Elders past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples today
+                </p>
+            </div>
 
-
-
-                
-
-                <div id="footer">
-                    <img src="images/jpc_logo_white.png" alt="Logo" class="footer-logo">
-                    <p class="footer-text">
-                        We acknowledge First Nations Peoples as the Traditional Custodians and Lore Keepers of the oldest living culture and pay respects to their Elders past and present. <br> We extend that respect to all First Nations Peoples.
-                    </p>
-                </div>
-    
             <!-- Scripts -->
-                <script src="assets/js/jquery.min.js"></script>
-                <script src="assets/js/jquery.dropotron.min.js"></script>
-                <script src="assets/js/jquery.scrolly.min.js"></script>
-                <script src="assets/js/jquery.scrollex.min.js"></script>
-                <script src="assets/js/browser.min.js"></script>
-                <script src="assets/js/breakpoints.min.js"></script>
-                <script src="assets/js/util.js"></script>
-                <script src="assets/js/main.js"></script>
-    
-        </body>
-    </html>
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.dropotron.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var images = document.querySelectorAll('.image-collage img');
+                    var options = {
+                        root: null,
+                        rootMargin: '0px',
+                        threshold: 0.1
+                    };
+
+                    function handleIntersection(entries, observer) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    }
+
+                    var observer = new IntersectionObserver(handleIntersection, options);
+
+                    images.forEach(function (image, index) {
+                        observer.observe(image);
+                        image.style.transitionDelay = (index % 3) * 0.5 + 's';
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+                                    

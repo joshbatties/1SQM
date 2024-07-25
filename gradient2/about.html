@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>About - JPC Timber</title>
+        <title>About - 1SQM</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
@@ -29,6 +29,48 @@
 				border-top: 1px solid white;
                 text-align: center;
 			}
+
+            #main .container p {
+        text-align: center;
+            }
+        @keyframes pullUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+        #animated-text {
+        font-family: sans-serif;
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        line-height: 1.5;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+
+        .word {
+        display: inline-block;
+        padding-right: 8px;
+        opacity: 0;
+        animation: pullUp 0.5s forwards;
+        animation-play-state: paused;
+        }
+
+        .no-bullets {
+        list-style-type: none;
+        padding: 0;
+        }
+
+        .no-bullets li {
+        margin: 0 0 10px 0; /* Adjust margin as needed */
+        }
 		</style>
     </head>
     <body class="is-preload">
@@ -38,8 +80,7 @@
             <div id="header">
                 <div class="inner">
                     <header>
-                        <h1><a href="index.html" id="logo">JPC Timber</a></h1>
-                        <img src="images/jpc_logo_white.png" alt="Example Image">
+                        <h1><a href="index.html" id="logo">One Square Metre</a></h1>
                     </header>
                 </div>
 
@@ -57,7 +98,7 @@
 										<li><a href="maintenance.html">Maintenance & Care</a></li>
 									</ul>
 								</li>
-								<li><a href="quotes.html">Quotes</a></li>
+								<li><a href="projects.html">Projects</a></li>
 								<li><a href="contact.html">Contact us</a></li>
 							</ul>
 						</nav>
@@ -72,26 +113,27 @@
 
                     <section>
                         <h3>Our Mission</h3>
-                        <p>Founded with a passion for beautiful, high-quality timber flooring, we have grown to become a trusted name in the industry. Our journey began with a simple mission: to provide homeowners and businesses with exquisite flooring solutions that are not only aesthetically pleasing but also sustainable and ethically sourced.</p>
+                        <p>Founded with a passion for <strong>beautiful, high-quality timber flooring,</strong> we have grown to become a trusted name in the industry. Our journey began with a simple mission: to provide homeowners and businesses with exquisite flooring solutions that are not only <strong>aesthetically pleasing</strong> but also <strong>sustainable</strong> and <strong>ethically sourced.</strong></p>
+                        
                         <h3>Our Values</h3>
-                        <p>We are dedicated to preserving our planet for future generations. Our timber is sourced from sustainably managed forests, ensuring that our products have a minimal environmental footprint. By choosing us, you are making a choice for a greener, healthier planet.
-                            <br>
-                            Integrity and transparency are at the heart of our operations. We believe in fair trade and work closely with our suppliers to ensure that all our timber is responsibly sourced. Our commitment to ethical business practices extends to every aspect of our work, from procurement to delivery.
-                            <br>
-                            Your satisfaction is our top priority. We pride ourselves on delivering a seamless and enjoyable customer experience, from your initial consultation to the final installation. Our team of experts is dedicated to providing personalized service, ensuring that your flooring project is completed to the highest standards.
-                        </p>
-                        <h3>Why Choose Us?</h3>
-                        <p><strong>Expert Craftsmanship</strong></p>
-                        <p><strong>Sustainable Materials</strong></p>
-                        <p><strong>Comprehensive Services</strong></p>
+                        <p>Integrity and transparency are at the heart of our operations. We believe in <strong>fair trade</strong> and work closely with our suppliers to ensure that all our timber is <strong>responsibly sourced.</strong> Our commitment to ethical business practices extends to every aspect of our work, from procurement to delivery. Your satisfaction is our top priority. We pride ourselves on delivering a <strong>seamless and enjoyable customer experience,</strong> from your initial consultation to the final installation. Our team of experts is dedicated to providing <strong>personalized service,</strong> ensuring that your flooring project is completed to the <strong>highest standards.</strong></p>
+                        
+                        <h3 id="animated-text">Why Choose Us?</h3>
+                        <ul class="no-bullets">
+                            <li><strong>Expert Craftsmanship:</strong> Our skilled artisans craft each piece with precision and care, ensuring exceptional quality.</li>
+                            <li><strong>Sustainable Materials:</strong> By choosing us you are making a choice for a greener, healthier planet.</li>
+                            <li><strong>Customer-Centric Approach:</strong> We put you first by delivering personalized and attentive service tailored to your unique needs.</li>
+                            <li><strong>Comprehensive Services:</strong> From installation to maintenance, we offer a full range of services to meet your needs.</li>
+                        </ul>
                     </section>
                 </div>
             </div>
 
-            <div id="footer">
-                <img src="images/jpc_logo_white.png" alt="Logo" class="footer-logo">
+             <!-- Footer -->
+             <div id="footer">
+                <img src="images/1SQM.png" alt="Logo" class="footer-logo">
                 <p class="footer-text">
-                    We acknowledge First Nations Peoples as the Traditional Custodians and Lore Keepers of the oldest living culture and pay respects to their Elders past and present. <br> We extend that respect to all First Nations Peoples.
+                    In the spirit of reconciliation, One Square Metre acknowledges the Traditional Custodians of Country throughout Australia and their connections to land, sea and community. <br>We pay our respect to their Elders past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples today
                 </p>
             </div>
 
@@ -104,6 +146,43 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+const textElement = document.getElementById('animated-text');
+const text = textElement.innerText;
+const words = text.split(' ');
 
+textElement.innerHTML = ''; // Clear original text
+
+words.forEach((word, index) => {
+const span = document.createElement('span');
+span.className = 'word';
+span.style.animationDelay = `${index * 0.2}s`;
+span.textContent = word === '' ? '\u00A0' : word;
+textElement.appendChild(span);
+});
+
+const observerOptions = {
+root: null,
+rootMargin: '0px',
+threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+entries.forEach(entry => {
+  if (entry.isIntersecting) {
+    entry.target.querySelectorAll('.word').forEach(word => {
+      word.style.animationPlayState = 'running';
+    });
+    observer.unobserve(entry.target); // Unobserve after animation triggers
+  }
+});
+}, observerOptions);
+
+observer.observe(textElement);
+});
+          </script>
+
+        </div>
     </body>
 </html>
