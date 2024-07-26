@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-        /* Ensure header positioning and z-index */
-        #header {
-            position: relative; /* Ensures the gradient positions correctly */
-        }
-
         #header .gradient {
             content: '';
             position: absolute;
@@ -22,13 +17,14 @@
             background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
             pointer-events: none; /* Ensure it doesn't interfere with interactions */
             z-index: 2; /* Ensure it's above the video but below other content */
-            opacity: 0; /* Initially hidden */
+            opacity: 0;
             transition: opacity 1s ease;
         }
 
         #header.scrolled .gradient {
-            opacity: 1; /* Visible when scrolled */
+            opacity: 1;
         }
+
 
         #header .inner {
             position: relative;
@@ -274,50 +270,6 @@
             50% { opacity: 1; }
             100% { opacity: 0; }
         }
-
-        .button-container {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .button-container.show {
-            opacity: 1;
-        }
-
-        .shine-button {
-            position: relative;
-            padding: 10px 20px;
-            margin: 0 10px;
-            background-color: #233642;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: background-color 0.3s;
-        }
-
-        .shine-button:hover {
-            background-color: #314d5d;
-        }
-
-        .shine-button::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(45deg);
-            transition: 0.5s;
-        }
-
-        .shine-button:hover::after {
-            left: 100%;
-            top: 100%;
-        }
-
     </style>
     <script>
         document.addEventListener('scroll', function() {
@@ -339,14 +291,9 @@
                 <header>
                     <h1>One Square Metre</h1>
                     <h2>Come to us for: <span id="rotate-text"></span></h2>
-                    <div class="button-container">
-                        <button class="shine-button">Shop Now</button>
-                        <button class="shine-button">Our Services</button>
-                    </div>
                 </header>
             </div>
-            <!-- Gradient Element -->
-            <div class="gradient"></div>
+
             <!-- Nav -->
             <nav id="nav">
                 <div class="logo">
@@ -473,8 +420,9 @@
                         </form>
                 </div>
             </section>
-
-        <!-- Footer -->
+			
+			
+		<!-- Footer -->
         <div id="footer">
             <div>
                 <img src="images/1SQM.png" alt="Logo" class="footer-logo">
@@ -492,138 +440,129 @@
                 </p>
             </div>
         </div>
-    </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var paragraphs = document.querySelectorAll('#banner p');
-            var images = document.querySelectorAll('#banner img');
-        
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        paragraphs.forEach(function(p, index) {
-                            var strongTags = p.querySelectorAll('strong');
-                            strongTags.forEach(function(strong, strongIndex) {
-                                setTimeout(function() {
-                                    strong.classList.add('appear-strong');
-                                }, index * 100);
-                            });
-
-                            setTimeout(function() {
-                                p.classList.add('appear');
-                            }, index * 500);
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					var paragraphs = document.querySelectorAll('#banner p');
+					var images = document.querySelectorAll('#banner img');
+				
+					var observer = new IntersectionObserver(function(entries) {
+						entries.forEach(function(entry) {
+							if (entry.isIntersecting) {
+								paragraphs.forEach(function(p, index) {
+									var strongTags = p.querySelectorAll('strong');
+									strongTags.forEach(function(strong, strongIndex) {
+										setTimeout(function() {
+											strong.classList.add('appear-strong');
+										}, index * 100); // Reduced delay for strong tags
+									});
+				
+									setTimeout(function() {
+										p.classList.add('appear');
+									}, index * 500); // Reduced delay for the rest of the text
+								});
+				
+								images.forEach(function(img, index) {
+									setTimeout(function() {
+										img.classList.add('appear');
+									}, 1000 + index * 300); // Delay for images to appear after paragraphs
+								});
+				
+								observer.disconnect(); // Stop observing after the animation has started
+							}
+						});
+					}, {
+						threshold: 0.1 // Adjust as needed (0.1 means 10% of the banner is visible)
+					});
+				
+					observer.observe(document.querySelector('#banner'));
+				});
+				</script>
+				<script>
+					document.addEventListener('DOMContentLoaded', function() {
+						var fadeElements = document.querySelectorAll('.fade-up-element');
+					
+						var observer = new IntersectionObserver(function(entries) {
+							entries.forEach(function(entry) {
+								if (entry.isIntersecting) {
+									entry.target.classList.add('appear');
+									observer.unobserve(entry.target);
+								}
+							});
+						}, {
+							threshold: 0.1 // Adjust as needed
+						});
+					
+						fadeElements.forEach(function(el) {
+							observer.observe(el);
+						});
+					});
+					</script>
+					<script>
+						window.addEventListener('scroll', function() {
+							var nav = document.getElementById('nav');
+							var logo = document.getElementById('nav-logo');
+							if (window.scrollY > 50) {
+								nav.classList.add('scrolled');
+							} else {
+								nav.classList.remove('scrolled');
+							}
+						});
+					</script>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const phrases = [
+                                "Great prices",
+                                "Beautiful aesthetics",
+                                "Sustainable Materials",
+                                "Durable timber",
+                                "Expert craftsmanship",
+                                "Friendly customer service",
+                                "Comprehensive services"
+                            ];
+                            let currentIndex = 0;
+                            const rotateTextElement = document.getElementById('rotate-text');
+                    
+                            function sleep(ms) {
+                                return new Promise(resolve => setTimeout(resolve, ms));
+                            }
+                    
+                            async function typeWord(word) {
+                                for (let i = 0; i < word.length; i++) {
+                                    rotateTextElement.textContent += word[i];
+                                    await sleep(100); // Adjust typing speed here
+                                }
+                            }
+                    
+                            async function deleteWord(word) {
+                                for (let i = word.length; i > 0; i--) {
+                                    rotateTextElement.textContent = word.substring(0, i - 1);
+                                    await sleep(50); // Adjust deleting speed here
+                                }
+                            }
+                    
+                            async function rotateText() {
+                                while (true) {
+                                    for (const phrase of phrases) {
+                                        await typeWord(phrase);
+                                        await sleep(1000); // Wait for 1 second after typing
+                                        await deleteWord(phrase);
+                                        await sleep(200); // Short pause before next word
+                                    }
+                                }
+                            }
+                    
+                            rotateText(); // Start the rotation
                         });
-
-                        images.forEach(function(img, index) {
-                            setTimeout(function() {
-                                img.classList.add('appear');
-                            }, 1000 + index * 300);
-                        });
-
-                        observer.disconnect();
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            observer.observe(document.querySelector('#banner'));
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var fadeElements = document.querySelectorAll('.fade-up-element');
-
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('appear');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            fadeElements.forEach(function(el) {
-                observer.observe(el);
-            });
-        });
-    </script>
-    <script>
-        window.addEventListener('scroll', function() {
-            var nav = document.getElementById('nav');
-            var logo = document.getElementById('nav-logo');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const phrases = [
-                "Great prices",
-                "Beautiful aesthetics",
-                "Sustainable Materials",
-                "Durable timber",
-                "Expert craftsmanship",
-                "Friendly customer service",
-                "Comprehensive services"
-            ];
-            let currentIndex = 0;
-            const rotateTextElement = document.getElementById('rotate-text');
-
-            function sleep(ms) {
-                return new Promise(resolve => setTimeout(resolve, ms));
-            }
-
-            async function typeWord(word) {
-                for (let i = 0; i < word.length; i++) {
-                    rotateTextElement.textContent += word[i];
-                    await sleep(100);
-                }
-            }
-
-            async function deleteWord(word) {
-                for (let i = word.length; i > 0; i--) {
-                    rotateTextElement.textContent = word.substring(0, i - 1);
-                    await sleep(50);
-                }
-            }
-
-            async function rotateText() {
-                while (true) {
-                    for (const phrase of phrases) {
-                        await typeWord(phrase);
-                        await sleep(1000);
-                        await deleteWord(phrase);
-                        await sleep(200);
-                    }
-                }
-            }
-
-            rotateText();
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                const buttonContainer = document.querySelector('.button-container');
-                buttonContainer.classList.add('show');
-            }, 2000);
-        });
-    </script>
-</body>
+                    </script>
+	</body>
 </html>
