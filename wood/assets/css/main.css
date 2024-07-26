@@ -170,7 +170,6 @@ input, select, textarea {
 	}
 
 	blockquote {
-		border-left: solid 0.5em #ddd;
 		padding: 1em 0 1em 2em;
 		font-style: italic;
 	}
@@ -194,8 +193,6 @@ input, select, textarea {
 		top: 4.5em;
 		margin-bottom: 9em;
 		height: 6px;
-		border-top: solid 1px white;
-		border-bottom: solid 1px white;
 	}
 
 		hr:before, hr:after {
@@ -2211,10 +2208,20 @@ input, select, textarea {
 			color: white;
 			font-size: 3em;
 			line-height: 1em;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a slight shadow */
+		}
+
+		#header h2 {
+			color: white;
+			font-size: 2em;
+			line-height: 1em;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a slight shadow */
+			margin-top: 20px;
 		}
 
 			#header h1 a {
 				color: inherit;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a slight shadow */;
 			}
 
 		#header .button {
@@ -2287,6 +2294,7 @@ input, select, textarea {
 		padding: 1.5em 0 1.5em 0;
 		z-index: 1;
 		overflow: hidden;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a slight shadow */
 	}
 
 		#nav > ul {
@@ -2295,8 +2303,6 @@ input, select, textarea {
 			display: inline-block;
 			margin: 0;
 			height: 40px;
-			border-left: solid 2px white;
-			border-right: solid 2px white;
 		}
 
 			#nav > ul:before, #nav > ul:after {
@@ -2307,8 +2313,6 @@ input, select, textarea {
 				top: 50%;
 				margin-top: -2px;
 				height: 5px;
-				border-top: solid 1px white;
-				border-bottom: solid 1px white;
 			}
 
 			#nav > ul:before {
@@ -2984,7 +2988,6 @@ input, select, textarea {
 					padding: 0.5em;
 					color: #ddd;
 					border: 0;
-					border-top: dotted 1px black);
 				}
 
 					#navPanel .link:first-child {
@@ -3143,3 +3146,4 @@ input, select, textarea {
 						margin-bottom: 2em;
 					}
 
+				}

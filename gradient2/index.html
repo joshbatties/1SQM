@@ -264,6 +264,22 @@
             border: none; /* Ensure no border is applied */
             transition: opacity 0.3s;
         }
+
+        #rotate-text {
+            display: inline-block;
+            min-width: 200px; /* Adjust as needed */
+        }
+
+        #rotate-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
     <script>
         document.addEventListener('scroll', function() {
@@ -284,13 +300,14 @@
             <div class="inner">
                 <header>
                     <h1>One Square Metre</h1>
+                    <h2>Come to us for: <span id="rotate-text"></span></h2>
                 </header>
             </div>
 
             <!-- Nav -->
             <nav id="nav">
                 <div class="logo">
-                    <a href="index.html"><img id="nav-logo" src="images/1SQM.png" alt="JPC Logo" width="200px" height: auto></a>
+                    <a href="index.html"><img id="nav-logo" src="images/1SQM.png" alt="1SQM Logo" width="200px" height: auto></a>
                 </div>
                 <ul class="menu">
                     <li><a href="about.html">About us</a></li>
@@ -511,5 +528,51 @@
 							}
 						});
 					</script>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const phrases = [
+                                "Great prices",
+                                "Beautiful aesthetics",
+                                "Sustainable Materials",
+                                "Durable timber",
+                                "Expert craftsmanship",
+                                "Friendly customer service",
+                                "Comprehensive services"
+                            ];
+                            let currentIndex = 0;
+                            const rotateTextElement = document.getElementById('rotate-text');
+                    
+                            function sleep(ms) {
+                                return new Promise(resolve => setTimeout(resolve, ms));
+                            }
+                    
+                            async function typeWord(word) {
+                                for (let i = 0; i < word.length; i++) {
+                                    rotateTextElement.textContent += word[i];
+                                    await sleep(100); // Adjust typing speed here
+                                }
+                            }
+                    
+                            async function deleteWord(word) {
+                                for (let i = word.length; i > 0; i--) {
+                                    rotateTextElement.textContent = word.substring(0, i - 1);
+                                    await sleep(50); // Adjust deleting speed here
+                                }
+                            }
+                    
+                            async function rotateText() {
+                                while (true) {
+                                    for (const phrase of phrases) {
+                                        await typeWord(phrase);
+                                        await sleep(1000); // Wait for 1 second after typing
+                                        await deleteWord(phrase);
+                                        await sleep(200); // Short pause before next word
+                                    }
+                                }
+                            }
+                    
+                            rotateText(); // Start the rotation
+                        });
+                    </script>
 	</body>
 </html>
