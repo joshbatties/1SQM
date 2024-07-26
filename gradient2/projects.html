@@ -8,27 +8,102 @@
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
         <style>
             #footer {
-                background-color: black;
-                color: white;
-                padding: 20px 0;
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-            }
+            position: relative; /* Ensure the footer is positioned relative to contain the gradient */
+            background-image: url("images/7020802.jpg");
+            background-size: cover; /* Ensure the image covers the whole area */
+            background-position: center; /* Center the image */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 150px; /* Add more white space above the footer */
+        }
 
-            .footer-logo {
-                max-width: 100px; /* Adjust this size as needed */
-                margin-right: 20px; /* Space between logo and text */
-            }
+        #footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px; /* Adjust height as needed for the gradient effect */
+            background: linear-gradient(to bottom, rgb(255, 255, 255), transparent); /* Gradient from black to transparent */
+        }
 
-            .footer-text {
-                margin: 0;
-                padding: 10px 20px;
-                border-top: 1px solid white;
-                text-align: center;
-            }
+        .footer-logo {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+
+        .footer-text {
+            margin: 0;
+            padding: 10px 20px;
+            border-top: 1px solid white;
+            text-align: center;
+        }
+
+        #footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            color: white;
+        }
+
+        #footer .footer-logo {
+            max-height: 60px;
+        }
+
+        #footer .copyright {
+            text-align: center;
+            color: white;
+            font-size: 0.8em;
+            cursor: default;
+            list-style: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+        }
+
+        #footer .copyright li:first-child {
+            border-left: 0;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        #footer .copyright li a {
+            color: inherit;
+        }
+
+        #footer p {
+            margin: 0;
+            padding: 0;
+            font-weight: bold; /* Make the text bold */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add a slight shadow */
+        }
+
+        #footer div:first-child {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 1em;
+        }
+
+        #footer div:nth-child(2) {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #footer div:nth-child(3) {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-right: 1em;
+        }
 
             .image-collage {
                 display: flex;
@@ -120,10 +195,21 @@
 
             <!-- Footer -->
             <div id="footer">
-                <img src="images/jpc_logo_white.png" alt="Logo" class="footer-logo">
-                <p class="footer-text">
-                    In the spirit of reconciliation, JPC Timber acknowledges the Traditional Custodians of Country throughout Australia and their connections to land, sea and community. <br>We pay our respect to their Elders past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples today
-                </p>
+                <div>
+                    <img src="images/1SQM.png" alt="Logo" class="footer-logo">
+                </div>
+                <div>
+                    <ul class="copyright">
+                        <li>&copy; One Square Metre. All rights reserved.</li>
+                    </ul>
+                </div>
+                <div>
+                    <p>
+                        Level 16, 1 Collins St, VIC 3000<br>
+                        +61 396 541 810<br>
+                        info@jpcgroup.com
+                    </p>
+                </div>
             </div>
 
             <!-- Scripts -->
