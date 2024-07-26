@@ -2980,7 +2980,7 @@ body.homepage.is-preload #header:before {
 					padding: 0.5em;
 					color: #ddd;
 					border: 0;
-					border-top: dotted 1px black);
+					border-top: dotted 1px black;
 				}
 
 					#navPanel .link:first-child {
@@ -3139,3 +3139,4 @@ body.homepage.is-preload #header:before {
 						margin-bottom: 2em;
 					}
 
+				}
