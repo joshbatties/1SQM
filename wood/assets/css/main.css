@@ -2,6 +2,13 @@
 @import url("fontawesome-all.min.css");
 
 
+@font-face {
+    font-family: 'StarlightPersonal';
+    src: url('fonts/Starlight Personal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -144,7 +151,6 @@ input, select, textarea {
 
 	a {
 		color: inherit;
-		border-bottom: solid 1px black;
 		text-decoration: none;
 		-moz-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
 		-webkit-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;

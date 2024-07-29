@@ -252,7 +252,12 @@
         #nav.scrolled li a {
             color: black;
         }
+        
 
+        #nav.scrolled .logo a {
+            color: white;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
         #nav .logo img {
             width: 60px;
             border: none; /* Ensure no border is applied */
@@ -276,6 +281,7 @@
         }
 
         .button-container {
+            margin-top: 20px;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
@@ -286,36 +292,48 @@
 
         .shine-button {
             position: relative;
-            padding: 10px 20px;
+            padding: 3px;
             margin: 0 10px;
-            background-color: #233642;
-            color: white;
+            background: linear-gradient(90deg, #233642, #fff, #233642);
+            background-size: 200% 100%;
+            animation: gradientBorder 3s linear infinite;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px; /* Increased border radius for more rounded corners */
             cursor: pointer;
             overflow: hidden;
-            transition: background-color 0.3s;
         }
 
-        .shine-button:hover {
-            background-color: #314d5d;
+        .shine-button span {
+            display: block;
+            padding: 10px 20px;
+            background-color: #233642;
+            color: white;
+            border-radius: 22px; /* Slightly smaller radius for the inner span */
         }
 
-        .shine-button::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(45deg);
-            transition: 0.5s;
+        @keyframes gradientBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        .shine-button:hover::after {
-            left: 100%;
-            top: 100%;
+    
+
+        @font-face {
+            font-family: 'StarlightPersonal';
+            src: url('assets/fonts/Starlight Personal.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .custom-font {
+            font-family: 'StarlightPersonal', sans-serif;
         }
 
     </style>
@@ -340,8 +358,8 @@
                     <h1>One Square Metre</h1>
                     <h2>Come to us for: <span id="rotate-text"></span></h2>
                     <div class="button-container">
-                        <button class="shine-button">Shop Now</button>
-                        <button class="shine-button">Our Services</button>
+                        <button class="shine-button"><span>Shop Now</span></button>
+                        <button class="shine-button"><span>Our Services</span></button>
                     </div>
                 </header>
             </div>
@@ -350,7 +368,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <div class="logo">
-                    <a href="index.html"><img id="nav-logo" src="images/1SQM.png" alt="JPC Logo" width="200px" height: auto></a>
+                    <a href="index.html" class="custom-font" style="font-size: 2em;">1SQM</a>
                 </div>
                 <ul class="menu">
                     <li><a href="about.html">About us</a></li>
@@ -432,17 +450,17 @@
 								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-1">
 									<img src="images/maintenance.png" alt="Installation" style="width: 70px; height: auto; margin-bottom: 10px;">
 									<h3>Installation</h3>
-									<p>We handle every detail, from initial measurement to the final fitting, guaranteeing a perfect finish every time.</p>
+									<p style="color: black">We handle every detail, from initial measurement to the final fitting, guaranteeing a perfect finish every time.</p>
 								</section>
 								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-2">
 									<img src="images/sanding.png" alt="Sand & Finish" style="width: 70px; height: auto; margin-bottom: 10px;">
 									<h3>Sand & Finish</h3>
-									<p>We use top-quality equipment and products to restore the natural beauty of your floors, providing a smooth and polished look that lasts.</p>
+									<p style="color: black">We use top-quality equipment and products to restore the natural beauty of your floors, providing a smooth and polished look that lasts.</p>
 								</section>
 								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-3">
 									<img src="images/maintenance (1).png" alt="Maintenance & Care" style="width: 70px; height: auto; margin-bottom: 10px;">
 									<h3>Maintenance & Care</h3>
-									<p>We provide ongoing care to keep your timber floors looking new and lasting longer.</p>
+									<p style="color: black">We provide ongoing care to keep your timber floors looking new and lasting longer.</p>
 								</section>
 							</div>
 						</div>
@@ -477,7 +495,7 @@
         <!-- Footer -->
         <div id="footer">
             <div>
-                <img src="images/1SQM.png" alt="Logo" class="footer-logo">
+                <a href="index.html" class="custom-font" style="font-size: 2em;">1SQM</a>
             </div>
             <div>
                 <ul class="copyright">
@@ -563,7 +581,6 @@
     <script>
         window.addEventListener('scroll', function() {
             var nav = document.getElementById('nav');
-            var logo = document.getElementById('nav-logo');
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
             } else {
@@ -618,12 +635,12 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                const buttonContainer = document.querySelector('.button-container');
-                buttonContainer.classList.add('show');
-            }, 2000);
-        });
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            const buttonContainer = document.querySelector('.button-container');
+            buttonContainer.classList.add('show');
+        }, 2000);
+    });
     </script>
 </body>
 </html>
