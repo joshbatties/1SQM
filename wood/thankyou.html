@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Contact - 1SQM</title>
+        <title>Thank You - 1SQM</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
         <style>
-			#footer {
+        #footer {
             position: relative; /* Ensure the footer is positioned relative to contain the gradient */
             background-image: url("images/footer.jpg"); /* Add the background image */
             background-size: cover; /* Ensure the image covers the whole area */
@@ -96,7 +96,16 @@
             align-items: flex-end;
             padding-right: 1em;
         }
-		</style>
+
+        .text-center {
+            text-align: center;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        </style>
     </head>
     <body class="is-preload">
         <div id="page-wrapper">
@@ -110,65 +119,37 @@
                 </div>
 
                 <!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html">About us</a></li>
-								<li><a href="shop.html">Shop</a></li>
-								<li>
-									<a href="services.html">Services</a>
-									<ul>
-										<li><a href="installation.html">Installation</a></li>
-										<li><a href="finish.html">Sand & Finish</a></li>
-										<li><a href="maintenance.html">Maintenance & Care</a></li>
-									</ul>
-								</li>
-								<li><a href="projects.html">Projects</a></li>
-								<li><a href="contact.html">Contact us</a></li>
-							</ul>
-						</nav>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li>
+                            <a href="services.html">Services</a>
+                            <ul>
+                                <li><a href="installation.html">Installation</a></li>
+                                <li><a href="finish.html">Sand & Finish</a></li>
+                                <li><a href="maintenance.html">Maintenance & Care</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact us</a></li>
+                    </ul>
+                </nav>
             </div>
 
             <!-- Main -->
             <div id="main" class="wrapper style1">
                 <div class="container">
-                    <header class="major">
-                        <h2>Contact Us</h2>
-                        <p>Please fill out the form below and one of our staff will respond as soon as possible.</p>
+                    <header class="major text-center">
+                        <h2>Thank You!</h2>
+                        <p>Your message has been successfully sent.</p>
                     </header>
-
-                    <!-- Form -->
-                    <form action="https://formsubmit.co/e21af56276f202ce8918c6c09852f23d" method="POST" id="contact-form">
-                        <div class="row gtr-uniform gtr-50">
-                            <div class="col-12">
-                                <input type="text" name="name" id="name" placeholder="Name" required />
-                            </div>
-                            <div class="col-12">
-                                <input type="email" name="email" id="email" placeholder="Email" required />
-                            </div>
-                            <div class="col-12">
-                                <input type="text" name="phone" id="phone" placeholder="Phone" required />
-                            </div>
-                            <div class="col-12">
-                                <input type="text" name="company" id="company" placeholder="Company (Optional)" />
-                            </div>
-                            <div class="col-12">
-                                <textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
-                            </div>
-                            <div class="col-12">
-                                <ul class="actions">
-                                    <li><input type="submit" value="Send Message" class="primary" /></li>
-                                    <li><input type="reset" value="Reset Form" /></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Hidden inputs for FormSubmit configuration -->
-                        <input type="hidden" name="_next" value="http://127.0.0.1:5501/wood/thankyou.html">
-                        <input type="hidden" name="_subject" value="New submission from 1SQM Website">
-                        <input type="hidden" name="_autoresponse" value="Thank you for your message. We will get back to you soon.">
-                        <input type="hidden" name="_template" value="table">
-                    </form>
-
+                    <div class="content text-center">
+                        <p>We appreciate you contacting One Square Metre. One of our team members will reach out to you as soon as possible.</p>
+                        <p>Have a great day!</p>
+                        <a href="index.html" class="button primary">Return to Home</a>
+                    </div>
                 </div>
             </div>
 
@@ -191,7 +172,7 @@
                 </div>
             </div>
 
-</div>
+        </div>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
@@ -202,7 +183,6 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
-        <script src="assets/js/contact-form.js"></script>
 
     </body>
 </html>
