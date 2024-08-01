@@ -1,0 +1,646 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>1SQM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* Ensure header positioning and z-index */
+        #header {
+            position: relative; /* Ensures the gradient positions correctly */
+        }
+
+        #header .gradient {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px; /* Adjust the height as needed */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
+            pointer-events: none; /* Ensure it doesn't interfere with interactions */
+            z-index: 2; /* Ensure it's above the video but below other content */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease;
+        }
+
+        #header.scrolled .gradient {
+            opacity: 1; /* Visible when scrolled */
+        }
+
+        #header .inner {
+            position: relative;
+            z-index: 3;
+            padding: 0 2em;
+        }
+
+        #header h1 {
+            position: relative;
+            z-index: 3;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        #footer {
+            position: relative; /* Ensure the footer is positioned relative to contain the gradient */
+            background-image: url("images/footer.jpg"); /* Add the background image */
+            background-size: cover; /* Ensure the image covers the whole area */
+            background-position: center; /* Center the image */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 150px; /* Add more white space above the footer */
+        }
+
+        .footer-logo {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+
+        .footer-text {
+            margin: 0;
+            padding: 10px 20px;
+            border-top: 1px solid white;
+            text-align: center;
+        }
+
+        #footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            color: white;
+        }
+
+        #footer .footer-logo {
+            max-height: 60px;
+        }
+
+        #footer .copyright {
+            text-align: center;
+            color: white;
+            font-size: 0.8em;
+            cursor: default;
+            list-style: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+        }
+
+        #footer .copyright li:first-child {
+            border-left: 0;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        #footer .copyright li a {
+            color: inherit;
+        }
+
+        #footer p {
+            margin: 0;
+            padding: 0;
+            font-weight: bold; /* Make the text bold */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add a slight shadow */
+        }
+
+        #footer div:first-child {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 1em;
+        }
+
+        #footer div:nth-child(2) {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #footer div:nth-child(3) {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-right: 1em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #banner p {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        #banner p.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #banner p strong {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        #banner p strong.appear-strong {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #banner img {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            margin: 0 15px; /* Add spacing between images */
+        }
+
+        #banner img.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up-element {
+            opacity: 0; /* Ensure elements are initially hidden */
+            animation: fadeUp 1s ease-out forwards; /* Keep the final state after animation */
+        }
+
+        .fade-up-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-up-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .fade-up-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .fade-up-delay-4 {
+            animation-delay: 0.8s;
+        }
+
+        /* Nav */
+        #nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.2em 1em;
+            z-index: 3;
+            background: none;
+            transition: background 0.3s, color 0.3s, padding 0.3s;
+        }
+
+        #nav.scrolled {
+            position: fixed;
+            background: white;
+        }
+
+        #nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav .logo {
+            margin-left: 1em;
+        }
+
+        #nav .menu {
+            display: flex;
+            margin-right: 1em;
+        }
+
+        #nav li {
+            margin: 0 0.5em;
+            padding: 0.5em;
+        }
+
+        #nav li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        #nav.scrolled li a {
+            color: black;
+        }
+        
+
+        #nav.scrolled .logo a {
+            color: white;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        #nav .logo img {
+            width: 60px;
+            border: none; /* Ensure no border is applied */
+            transition: opacity 0.3s;
+        }
+
+        #rotate-text {
+            display: inline-block;
+            min-width: 200px; /* Adjust as needed */
+        }
+
+        #rotate-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .button-container {
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .button-container.show {
+            opacity: 1;
+        }
+
+        .shine-button {
+            position: relative;
+            padding: 3px;
+            margin: 0 10px;
+            background: linear-gradient(90deg, #233642, #fff, #233642);
+            background-size: 200% 100%;
+            animation: gradientBorder 3s linear infinite;
+            border: none;
+            border-radius: 25px; /* Increased border radius for more rounded corners */
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .shine-button span {
+            display: block;
+            padding: 10px 20px;
+            background-color: #233642;
+            color: white;
+            border-radius: 22px; /* Slightly smaller radius for the inner span */
+        }
+
+        @keyframes gradientBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+    
+
+        @font-face {
+            font-family: 'AmericanCaptain';
+            src: url('assets/fonts/American Captain.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .custom-font {
+            font-family: 'AmericanCaptain', sans-serif;
+        }
+
+    </style>
+    <script>
+        document.addEventListener('scroll', function() {
+            const header = document.querySelector('#header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</head>
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <div id="header">
+            <!-- Inner -->
+            <div class="inner">
+                <header>
+                    <h1 class="custom-font">One Square Metre</h1>
+                    <h2 class="custom-font">Come to us for: <span id="rotate-text"></span></h2>
+                    <div class="button-container">
+                        <button class="shine-button"><span>Shop Now</span></button>
+                        <button class="shine-button"><span>Our Services</span></button>
+                    </div>
+                </header>
+            </div>
+            <!-- Gradient Element -->
+            <div class="gradient"></div>
+            <!-- Nav -->
+            <nav id="nav">
+                <div class="logo">
+                    <a href="index.html" class="custom-font" style="font-size: 2em;">1SQM</a>
+                </div>
+                <ul class="menu">
+                    <li><a href="about.html" class="custom-font">About us</a></li>
+                    <li><a href="shop.html" class="custom-font">Shop</a></li>
+                    <li>
+                        <a href="services.html" class="custom-font">Services</a>
+                        <ul>
+                            <li><a href="installation.html" class="custom-font">Installation</a></li>
+                            <li><a href="finish.html" class="custom-font">Sand & Finish</a></li>
+                            <li><a href="maintenance.html" class="custom-font">Maintenance & Care</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="projects.html" class="custom-font">Projects</a></li>
+                    <li><a href="contact.html" class="custom-font">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <section id="banner">
+            <header>
+                <h2>Our <strong>Values</strong></h2>
+                <p style="font-size: 130%;">Our commitment to <strong>eco-friendly</strong> materials and processes ensures that your beautiful new floors are as <strong>kind to the planet</strong> as they are your home.</p>
+                <p style="font-size: 130%;">We pride ourselves on delivering top-notch <strong>craftsmanship</strong> and exceptional <strong>customer service,</strong> creating a welcoming and satisfying experience for <strong>every client.</strong></p>
+                <p style="font-size: 130%;">Trust us to enhance your space with floors that are not only <strong>stunning</strong> but also <strong>sustainably sourced</strong> and <strong>expertly installed.</p>
+                </header>
+                    <img src="images/save-the-world.png" alt="Eco Friendly" style="width: 70px; height: auto; margin-bottom: 10px;">
+                    <img src="images/customer-service.png" alt="Customer Service" style="width: 70px; height: auto; margin-bottom: 10px;">
+                    <img src="images/expert.png" alt="Expert" style="width: 70px; height: auto; margin-bottom: 10px;">	
+        </section>
+
+		<!-- Banner -->
+        <section id="banner">
+            <header>
+                <h2>Our <strong>Products</strong></h2>
+                <p>Browse some of our most popular products.</p></header>
+                <footer class="major" style="margin-top: -40px;">
+                    <ul class="actions special">
+                        <li><a href="shop.html" class="button fade-up-element fade-up-delay-4">Shop all</a></li>
+                    </ul>
+                </footer>
+            </section>				
+
+
+			<!-- Carousel -->
+				<section class="carousel">
+					<div class="reel">
+						<article>
+							<div class="sr-element sr-products" data-embed="single_product_widget"><script type="application/json" data-config="embed">{"publishable_key":"sr_live_pk_4a8f9699955b07f7c35041d95ebc50d9f80e","options":{"product_to_display":"prod_66986e0abc428853594919","image_dimension_value":"crop","image_aspect_ratio":"portrait","variation_style":"on_hover","button_style":"standard","button_position":"inline","open_product_in":"in_page"},"includes":{"show_product_name":"1","show_product_price":"1","show_product_image":"1","show_product_summary":"1","open_modal_on_image_click":"1","show_view_product_button":"1","show_add_to_cart_button":"1","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","image_swap":"1","show_button_icons":"1"},"product_popup":{"show_product_name":"1","show_product_price":"1","show_product_summary":"1","show_product_description":"1","show_product_image":"1","show_select_quantity":"1","show_image_thumbnails":"1","show_product_reviews":"1","show_product_sku":"1","show_product_categories":"1","show_social_sharing_icons":"1","show_related_products":"1","thumbnail_layout":"horizontal_below","image_dimension_value":"crop","image_aspect_ratio":"portrait","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","show_product_tabs":"1","image_zoom":"1","lightbox_gallery":"1","show_stock":"0"},"styles":{"align_content":"center","product_title":"#314d5d","product_price":"#2d2d2d","product_summary":"#777777","button_background":"#233642","button_color":"#ffffff","view_product_button_background":"#233642","view_product_button_color":"#ffffff","view_cart_button_background":"#233642","view_cart_button_color":"#ffffff","product_background":"#ffffff","modal_background":"#ffffff","show_product_shadow":"0","show_rounded_edges":"0","show_padding":"1","button_font_weight":"normal","popup":{"colors":{"product_title":"#333","product_price":"#666666","product_summary":"#666666","button_background":"#233642","button_color":"#ffffff","product_active_tab_background":"#f5f5f5"}}}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+						</article><article>
+							<div class="sr-element sr-products" data-embed="single_product_widget"><script type="application/json" data-config="embed">{"publishable_key":"sr_live_pk_4a8f9699955b07f7c35041d95ebc50d9f80e","options":{"product_to_display":"prod_66987187eb6a3936733308","image_dimension_value":"crop","image_aspect_ratio":"portrait","variation_style":"on_hover","button_style":"standard","button_position":"inline","open_product_in":"in_page"},"includes":{"show_product_name":"1","show_product_price":"1","show_product_image":"1","show_product_summary":"1","open_modal_on_image_click":"1","show_view_product_button":"1","show_add_to_cart_button":"1","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","image_swap":"1","show_button_icons":"1"},"product_popup":{"show_product_name":"1","show_product_price":"1","show_product_summary":"1","show_product_description":"1","show_product_image":"1","show_select_quantity":"1","show_image_thumbnails":"1","show_product_reviews":"1","show_product_sku":"1","show_product_categories":"1","show_social_sharing_icons":"1","show_related_products":"1","thumbnail_layout":"horizontal_below","image_dimension_value":"crop","image_aspect_ratio":"portrait","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","show_product_tabs":"1","image_zoom":"1","lightbox_gallery":"1","show_stock":"0"},"styles":{"align_content":"center","product_title":"#314d5d","product_price":"#2d2d2d","product_summary":"#777777","button_background":"#233642","button_color":"#ffffff","view_product_button_background":"#233642","view_product_button_color":"#ffffff","view_cart_button_background":"#233642","view_cart_button_color":"#ffffff","product_background":"#ffffff","modal_background":"#ffffff","show_product_shadow":"0","show_rounded_edges":"0","show_padding":"1","button_font_weight":"normal","popup":{"colors":{"product_title":"#333","product_price":"#666666","product_summary":"#666666","button_background":"#233642","button_color":"#ffffff","product_active_tab_background":"#f5f5f5"}}}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+						</article><article>
+							<div class="sr-element sr-products" data-embed="single_product_widget"><script type="application/json" data-config="embed">{"publishable_key":"sr_live_pk_4a8f9699955b07f7c35041d95ebc50d9f80e","options":{"product_to_display":"prod_669871ee8194f475915115","image_dimension_value":"crop","image_aspect_ratio":"portrait","variation_style":"on_hover","button_style":"standard","button_position":"inline","open_product_in":"in_page"},"includes":{"show_product_name":"1","show_product_price":"1","show_product_image":"1","show_product_summary":"1","open_modal_on_image_click":"1","show_view_product_button":"1","show_add_to_cart_button":"1","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","image_swap":"1","show_button_icons":"1"},"product_popup":{"show_product_name":"1","show_product_price":"1","show_product_summary":"1","show_product_description":"1","show_product_image":"1","show_select_quantity":"1","show_image_thumbnails":"1","show_product_reviews":"1","show_product_sku":"1","show_product_categories":"1","show_social_sharing_icons":"1","show_related_products":"1","thumbnail_layout":"horizontal_below","image_dimension_value":"crop","image_aspect_ratio":"portrait","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","show_product_tabs":"1","image_zoom":"1","lightbox_gallery":"1","show_stock":"0"},"styles":{"align_content":"center","product_title":"#314d5d","product_price":"#2d2d2d","product_summary":"#777777","button_background":"#233642","button_color":"#ffffff","view_product_button_background":"#233642","view_product_button_color":"#ffffff","view_cart_button_background":"#233642","view_cart_button_color":"#ffffff","product_background":"#ffffff","modal_background":"#ffffff","show_product_shadow":"0","show_rounded_edges":"0","show_padding":"1","button_font_weight":"normal","popup":{"colors":{"product_title":"#333","product_price":"#666666","product_summary":"#666666","button_background":"#233642","button_color":"#ffffff","product_active_tab_background":"#f5f5f5"}}}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+						</article><article>
+							<div class="sr-element sr-products" data-embed="single_product_widget"><script type="application/json" data-config="embed">{"publishable_key":"sr_live_pk_4a8f9699955b07f7c35041d95ebc50d9f80e","options":{"product_to_display":"prod_66987408d2fca586377435","image_dimension_value":"crop","image_aspect_ratio":"portrait","variation_style":"on_hover","button_style":"standard","button_position":"inline","open_product_in":"in_page"},"includes":{"show_product_name":"1","show_product_price":"1","show_product_image":"1","show_product_summary":"1","open_modal_on_image_click":"1","show_view_product_button":"1","show_add_to_cart_button":"1","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","image_swap":"1","show_button_icons":"1"},"product_popup":{"show_product_name":"1","show_product_price":"1","show_product_summary":"1","show_product_description":"1","show_product_image":"1","show_select_quantity":"1","show_image_thumbnails":"1","show_product_reviews":"1","show_product_sku":"1","show_product_categories":"1","show_social_sharing_icons":"1","show_related_products":"1","thumbnail_layout":"horizontal_below","image_dimension_value":"crop","image_aspect_ratio":"portrait","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","show_product_tabs":"1","image_zoom":"1","lightbox_gallery":"1","show_stock":"0"},"styles":{"align_content":"center","product_title":"#314d5d","product_price":"#2d2d2d","product_summary":"#777777","button_background":"#233642","button_color":"#ffffff","view_product_button_background":"#233642","view_product_button_color":"#ffffff","view_cart_button_background":"#233642","view_cart_button_color":"#ffffff","product_background":"#ffffff","modal_background":"#ffffff","show_product_shadow":"0","show_rounded_edges":"0","show_padding":"1","button_font_weight":"normal","popup":{"colors":{"product_title":"#333","product_price":"#666666","product_summary":"#666666","button_background":"#233642","button_color":"#ffffff","product_active_tab_background":"#f5f5f5"}}}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+						</article><article>
+							<div class="sr-element sr-products" data-embed="single_product_widget"><script type="application/json" data-config="embed">{"publishable_key":"sr_live_pk_4a8f9699955b07f7c35041d95ebc50d9f80e","options":{"product_to_display":"prod_66987437f044c939402715","image_dimension_value":"crop","image_aspect_ratio":"portrait","variation_style":"on_hover","button_style":"standard","button_position":"inline","open_product_in":"in_page"},"includes":{"show_product_name":"1","show_product_price":"1","show_product_image":"1","show_product_summary":"1","open_modal_on_image_click":"1","show_view_product_button":"1","show_add_to_cart_button":"1","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","image_swap":"1","show_button_icons":"1"},"product_popup":{"show_product_name":"1","show_product_price":"1","show_product_summary":"1","show_product_description":"1","show_product_image":"1","show_select_quantity":"1","show_image_thumbnails":"1","show_product_reviews":"1","show_product_sku":"1","show_product_categories":"1","show_social_sharing_icons":"1","show_related_products":"1","thumbnail_layout":"horizontal_below","image_dimension_value":"crop","image_aspect_ratio":"portrait","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","show_product_tabs":"1","image_zoom":"1","lightbox_gallery":"1","show_stock":"0"},"styles":{"align_content":"center","product_title":"#314d5d","product_price":"#2d2d2d","product_summary":"#777777","button_background":"#233642","button_color":"#ffffff","view_product_button_background":"#233642","view_product_button_color":"#ffffff","view_cart_button_background":"#233642","view_cart_button_color":"#ffffff","product_background":"#ffffff","modal_background":"#ffffff","show_product_shadow":"0","show_rounded_edges":"0","show_padding":"1","button_font_weight":"normal","popup":{"colors":{"product_title":"#333","product_price":"#666666","product_summary":"#666666","button_background":"#233642","button_color":"#ffffff","product_active_tab_background":"#f5f5f5"}}}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+						</article><article>
+							<div class="sr-element sr-products" data-embed="single_product_widget"><script type="application/json" data-config="embed">{"publishable_key":"sr_live_pk_4a8f9699955b07f7c35041d95ebc50d9f80e","options":{"product_to_display":"prod_66987463ea20f885018507","image_dimension_value":"crop","image_aspect_ratio":"portrait","variation_style":"on_hover","button_style":"standard","button_position":"inline","open_product_in":"in_page"},"includes":{"show_product_name":"1","show_product_price":"1","show_product_image":"1","show_product_summary":"1","open_modal_on_image_click":"1","show_view_product_button":"1","show_add_to_cart_button":"1","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","image_swap":"1","show_button_icons":"1"},"product_popup":{"show_product_name":"1","show_product_price":"1","show_product_summary":"1","show_product_description":"1","show_product_image":"1","show_select_quantity":"1","show_image_thumbnails":"1","show_product_reviews":"1","show_product_sku":"1","show_product_categories":"1","show_social_sharing_icons":"1","show_related_products":"1","thumbnail_layout":"horizontal_below","image_dimension_value":"crop","image_aspect_ratio":"portrait","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","show_product_tabs":"1","image_zoom":"1","lightbox_gallery":"1","show_stock":"0"},"styles":{"align_content":"center","product_title":"#314d5d","product_price":"#2d2d2d","product_summary":"#777777","button_background":"#233642","button_color":"#ffffff","view_product_button_background":"#233642","view_product_button_color":"#ffffff","view_cart_button_background":"#233642","view_cart_button_color":"#ffffff","product_background":"#ffffff","modal_background":"#ffffff","show_product_shadow":"0","show_rounded_edges":"0","show_padding":"1","button_font_weight":"normal","popup":{"colors":{"product_title":"#333","product_price":"#666666","product_summary":"#666666","button_background":"#233642","button_color":"#ffffff","product_active_tab_background":"#f5f5f5"}}}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+						</article><article>
+							<div class="sr-element sr-products" data-embed="single_product_widget"><script type="application/json" data-config="embed">{"publishable_key":"sr_live_pk_4a8f9699955b07f7c35041d95ebc50d9f80e","options":{"product_to_display":"prod_6698749c0b433008191881","image_dimension_value":"crop","image_aspect_ratio":"portrait","variation_style":"on_hover","button_style":"standard","button_position":"inline","open_product_in":"in_page"},"includes":{"show_product_name":"1","show_product_price":"1","show_product_image":"1","show_product_summary":"1","open_modal_on_image_click":"1","show_view_product_button":"1","show_add_to_cart_button":"1","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","image_swap":"1","show_button_icons":"1"},"product_popup":{"show_product_name":"1","show_product_price":"1","show_product_summary":"1","show_product_description":"1","show_product_image":"1","show_select_quantity":"1","show_image_thumbnails":"1","show_product_reviews":"1","show_product_sku":"1","show_product_categories":"1","show_social_sharing_icons":"1","show_related_products":"1","thumbnail_layout":"horizontal_below","image_dimension_value":"crop","image_aspect_ratio":"portrait","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","show_product_tabs":"1","image_zoom":"1","lightbox_gallery":"1","show_stock":"0"},"styles":{"align_content":"center","product_title":"#314d5d","product_price":"#2d2d2d","product_summary":"#777777","button_background":"#233642","button_color":"#ffffff","view_product_button_background":"#233642","view_product_button_color":"#ffffff","view_cart_button_background":"#233642","view_cart_button_color":"#ffffff","product_background":"#ffffff","modal_background":"#ffffff","show_product_shadow":"0","show_rounded_edges":"0","show_padding":"1","button_font_weight":"normal","popup":{"colors":{"product_title":"#333","product_price":"#666666","product_summary":"#666666","button_background":"#233642","button_color":"#ffffff","product_active_tab_background":"#f5f5f5"}}}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+						</article><article>
+							<div class="sr-element sr-products" data-embed="single_product_widget"><script type="application/json" data-config="embed">{"publishable_key":"sr_live_pk_4a8f9699955b07f7c35041d95ebc50d9f80e","options":{"product_to_display":"prod_669874c981d05655895264","image_dimension_value":"crop","image_aspect_ratio":"portrait","variation_style":"on_hover","button_style":"standard","button_position":"inline","open_product_in":"in_page"},"includes":{"show_product_name":"1","show_product_price":"1","show_product_image":"1","show_product_summary":"1","open_modal_on_image_click":"1","show_view_product_button":"1","show_add_to_cart_button":"1","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","image_swap":"1","show_button_icons":"1"},"product_popup":{"show_product_name":"1","show_product_price":"1","show_product_summary":"1","show_product_description":"1","show_product_image":"1","show_select_quantity":"1","show_image_thumbnails":"1","show_product_reviews":"1","show_product_sku":"1","show_product_categories":"1","show_social_sharing_icons":"1","show_related_products":"1","thumbnail_layout":"horizontal_below","image_dimension_value":"crop","image_aspect_ratio":"portrait","show_min_max_order_quantity":"1","show_sale":"1","show_free_shipping":"1","show_new_product":"1","show_digital_download":"1","show_pwyw":"1","show_product_tabs":"1","image_zoom":"1","lightbox_gallery":"1","show_stock":"0"},"styles":{"align_content":"center","product_title":"#314d5d","product_price":"#2d2d2d","product_summary":"#777777","button_background":"#233642","button_color":"#ffffff","view_product_button_background":"#233642","view_product_button_color":"#ffffff","view_cart_button_background":"#233642","view_cart_button_color":"#ffffff","product_background":"#ffffff","modal_background":"#ffffff","show_product_shadow":"0","show_rounded_edges":"0","show_padding":"1","button_font_weight":"normal","popup":{"colors":{"product_title":"#333","product_price":"#666666","product_summary":"#666666","button_background":"#233642","button_color":"#ffffff","product_active_tab_background":"#f5f5f5"}}}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+						</article><article>
+							
+						</article><article>
+							
+						</article>
+					</div>
+				</section>
+
+
+				<section id="four" class="wrapper style1 special fade-up">
+					<div class="container">
+						<header class="major">
+							<h2>Our <strong>Services</strong></h2>
+						</header>
+						<div class="box alt">
+							<div class="row gtr-uniform">
+								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-1">
+									<img src="images/maintenance.png" alt="Installation" style="width: 70px; height: auto; margin-bottom: 10px;">
+									<h3>Installation</h3>
+									<p style="color: black">We handle every detail, from initial measurement to the final fitting, guaranteeing a perfect finish every time.</p>
+								</section>
+								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-2">
+									<img src="images/sanding.png" alt="Sand & Finish" style="width: 70px; height: auto; margin-bottom: 10px;">
+									<h3>Sand & Finish</h3>
+									<p style="color: black">We use top-quality equipment and products to restore the natural beauty of your floors, providing a smooth and polished look that lasts.</p>
+								</section>
+								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-3">
+									<img src="images/maintenance (1).png" alt="Maintenance & Care" style="width: 70px; height: auto; margin-bottom: 10px;">
+									<h3>Maintenance & Care</h3>
+									<p style="color: black">We provide ongoing care to keep your timber floors looking new and lasting longer.</p>
+								</section>
+							</div>
+						</div>
+						<footer class="major" style="margin-top: -40px;">
+							<ul class="actions special">
+								<li><a href="services.html" class="button fade-up-element fade-up-delay-4">Find out more</a></li>
+							</ul>
+						</footer>
+					</div>
+				</section>
+				
+							
+			<!-- Five -->
+			<section id="five" class="wrapper style2 special fade">
+                <div class="container">
+                        <header>
+                            <h2>Get in <strong>touch.</strong></h2>
+                            <p>Describe your needs and one of our team members will be in contact to assist you.</p>
+                        </header>
+                        <form method="post" action="#" class="cta">
+                            <div class="row gtr-uniform gtr-50">
+                                <div class="col-12">
+                                    <ul class="actions special">
+                                        <li><a href="contact.html" class="button">Contact us</a></li>
+                                    </ul>
+                                </div>
+                            </div>	
+                        </form>
+                </div>
+            </section>
+
+        <!-- Footer -->
+        <div id="footer">
+            <div>
+                <a href="index.html" class="custom-font" style="font-size: 2em;">1SQM</a>
+            </div>
+            <div>
+                <ul class="copyright">
+                    <li>&copy; One Square Metre. All rights reserved.</li>
+                </ul>
+            </div>
+            <div>
+                <p>
+                    Level 16, 1 Collins St, VIC 3000<br>
+                    +61 396 541 810<br>
+                    info@jpcgroup.com
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var paragraphs = document.querySelectorAll('#banner p');
+            var images = document.querySelectorAll('#banner img');
+        
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        paragraphs.forEach(function(p, index) {
+                            var strongTags = p.querySelectorAll('strong');
+                            strongTags.forEach(function(strong, strongIndex) {
+                                setTimeout(function() {
+                                    strong.classList.add('appear-strong');
+                                }, index * 100);
+                            });
+
+                            setTimeout(function() {
+                                p.classList.add('appear');
+                            }, index * 500);
+                        });
+
+                        images.forEach(function(img, index) {
+                            setTimeout(function() {
+                                img.classList.add('appear');
+                            }, 1000 + index * 300);
+                        });
+
+                        observer.disconnect();
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            observer.observe(document.querySelector('#banner'));
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var fadeElements = document.querySelectorAll('.fade-up-element');
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeElements.forEach(function(el) {
+                observer.observe(el);
+            });
+        });
+    </script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const phrases = [
+                "Great prices",
+                "Beautiful aesthetics",
+                "Sustainable Materials",
+                "Durable timber",
+                "Expert craftsmanship",
+                "Friendly customer service",
+                "Comprehensive services"
+            ];
+            let currentIndex = 0;
+            const rotateTextElement = document.getElementById('rotate-text');
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            async function typeWord(word) {
+                for (let i = 0; i < word.length; i++) {
+                    rotateTextElement.textContent += word[i];
+                    await sleep(100);
+                }
+            }
+
+            async function deleteWord(word) {
+                for (let i = word.length; i > 0; i--) {
+                    rotateTextElement.textContent = word.substring(0, i - 1);
+                    await sleep(50);
+                }
+            }
+
+            async function rotateText() {
+                while (true) {
+                    for (const phrase of phrases) {
+                        await typeWord(phrase);
+                        await sleep(1000);
+                        await deleteWord(phrase);
+                        await sleep(200);
+                    }
+                }
+            }
+
+            rotateText();
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            const buttonContainer = document.querySelector('.button-container');
+            buttonContainer.classList.add('show');
+        }, 2000);
+    });
+    </script>
+</body>
+</html>

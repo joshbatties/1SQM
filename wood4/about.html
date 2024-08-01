@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>About - 1SQM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        #footer {
+            position: relative;
+            background-image: url("images/footer.jpg"); /* Add the background image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 150px;
+        }
+
+        .footer-logo {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+
+        .footer-text {
+            margin: 0;
+            padding: 10px 20px;
+            border-top: 1px solid white;
+            text-align: center;
+        }
+
+        #footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            color: white;
+        }
+
+        #footer .footer-logo {
+            max-height: 60px;
+        }
+
+        #footer .copyright {
+            text-align: center;
+            color: white;
+            font-size: 0.8em;
+            cursor: default;
+            list-style: none;
+            padding: 0;
+        }
+
+        #footer .copyright li:first-child {
+            border-left: 0;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        #footer .copyright li a {
+            color: inherit;
+        }
+
+        #footer p {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #footer div:first-child {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 1em;
+        }
+
+        #footer div:nth-child(2) {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #footer div:nth-child(3) {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-right: 1em;
+        }
+
+        #main .container p {
+            text-align: center;
+        }
+
+        @keyframes pullUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #animated-text {
+            font-family: sans-serif;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            line-height: 1.5;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .word {
+            display: inline-block;
+            padding-right: 8px;
+            opacity: 0;
+            animation: pullUp 0.5s forwards;
+            animation-play-state: paused;
+        }
+
+        .no-bullets {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .no-bullets li {
+            margin: 0 0 10px 0;
+        }
+
+        #acknowledgement p {
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        strong.fade-in-list {
+            display: inline-block;
+            transform: translateX(-50px);
+            transition: transform 0.5s ease-out;
+            will-change: transform;
+            opacity: 0;
+        }
+
+        strong.fade-in-list.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .hidden-text {
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .hidden-text.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <div id="header">
+            <div class="inner">
+                <header>
+                    <h1><a href="index.html" id="logo">One Square Metre</a></h1>
+                </header>
+            </div>
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li>tesrt</li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li>
+                        <a href="services.html">Services</a>
+                        <ul>
+                            <li><a href="installation.html">Installation</a></li>
+                            <li><a href="finish.html">Sand & Finish</a></li>
+                            <li><a href="maintenance.html">Maintenance & Care</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Main -->
+        <div id="main" class="wrapper style1">
+            <div class="container">
+                <header class="major">
+                    <h2>About Us</h2>
+                </header>
+                <section>
+                    <h3 id="animated-text">Why Choose Us?</h3>
+                    <ul class="no-bullets">
+                        <li>
+                            <strong class="fade-in-list">Expert Craftsmanship:</strong>
+                            <span class="hidden-text">Our skilled artisans craft each piece with precision and care, ensuring exceptional quality.</span>
+                        </li>
+                        <li>
+                            <strong class="fade-in-list">Sustainable Materials:</strong>
+                            <span class="hidden-text">By choosing us you are making a choice for a greener, healthier planet.</span>
+                        </li>
+                        <li>
+                            <strong class="fade-in-list">Customer-Centric Approach:</strong>
+                            <span class="hidden-text">We put you first by delivering personalized and attentive service tailored to your unique needs.</span>
+                        </li>
+                        <li>
+                            <strong class="fade-in-list">Comprehensive Services:</strong>
+                            <span class="hidden-text">From installation to maintenance, we offer a full range of services to meet your needs.</span>
+                        </li>
+                    </ul>
+                    <h3>Our Mission</h3>
+                    <p>Founded with a passion for <strong class="fade-in">beautiful, high-quality timber flooring,</strong> we have grown to become a trusted name in the industry. Our journey began with a simple mission: to provide homeowners and businesses with exquisite flooring solutions that are not only <strong class="fade-in">aesthetically pleasing</strong> but also <strong class="fade-in">sustainable</strong> and <strong class="fade-in">ethically sourced.</strong></p>
+                    <h3>Our Values</h3>
+                    <p>Integrity and transparency are at the heart of our operations. We believe in <strong class="fade-in">fair trade</strong> and work closely with our suppliers to ensure that all our timber is <strong class="fade-in">responsibly sourced.</strong> Our commitment to ethical business practices extends to every aspect of our work, from procurement to delivery. Your satisfaction is our top priority. We pride ourselves on delivering a <strong class="fade-in">seamless and enjoyable customer experience,</strong> from your initial consultation to the final installation. Our team of experts is dedicated to providing <strong class="fade-in">personalized service,</strong> ensuring that your flooring project is completed to the <strong class="fade-in">highest standards.</strong></p>
+                </section>
+            </div>
+        </div>
+        <section id="acknowledgement">
+            <p>In the spirit of reconciliation, One Square Metre acknowledges the Traditional Custodians of Country throughout Australia and their connections to land, sea and community. <br>We pay our respect to their Elders past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples today</p>
+        </section>
+        <!-- Footer -->
+        <div id="footer">
+            <div>
+                <img src="images/1SQM.png" alt="Logo" class="footer-logo">
+            </div>
+            <div>
+                <ul class="copyright">
+                    <li>&copy; One Square Metre. All rights reserved.</li>
+                </ul>
+            </div>
+            <div>
+                <p>Level 16, 1 Collins St, VIC 3000<br> +61 396 541 810<br> info@jpcgroup.com</p>
+            </div>
+        </div>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const textElement = document.getElementById('animated-text');
+                const text = textElement.innerText;
+                const words = text.split(' ');
+
+                textElement.innerHTML = '';
+
+                words.forEach((word, index) => {
+                    const span = document.createElement('span');
+                    span.className = 'word';
+                    span.style.animationDelay = `${index * 0.2}s`;
+                    span.textContent = word === '' ? '\u00A0' : word;
+                    textElement.appendChild(span);
+                });
+
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.querySelectorAll('.word').forEach(word => {
+                                word.style.animationPlayState = 'running';
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                observer.observe(textElement);
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const listItems = document.querySelectorAll('.no-bullets li');
+
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            observer.unobserve(entry.target);
+                            
+                            listItems.forEach((item, index) => {
+                                const strongElement = item.querySelector('strong.fade-in-list');
+                                const hiddenText = item.querySelector('.hidden-text');
+                                
+                                setTimeout(() => {
+                                    strongElement.classList.add('visible');
+                                    
+                                    // Show hidden text after strong text finishes sliding in
+                                    setTimeout(() => {
+                                        hiddenText.classList.add('visible');
+                                    }, 500); // 500ms is the duration of the slide-in animation
+                                }, 1000 + (index * 500)); // 1000ms initial delay, then 500ms between each item
+                            });
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe the parent ul element
+                const parent = listItems[0].closest('ul');
+                observer.observe(parent);
+            });
+        </script>
+    </div>
+</body>
+</html>
