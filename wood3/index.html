@@ -13,6 +13,11 @@
             position: relative; /* Ensures the gradient positions correctly */
         }
 
+        #header #nav {
+            padding: 0 !important;
+            height: 80px !important; /* Adjust this value to your preferred nav height */
+        }
+
         #header .gradient {
             content: '';
             position: absolute;
@@ -212,7 +217,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.2em 1em;
+            padding: 0.05em 1em;
             z-index: 3;
             background: none;
             transition: background 0.3s, color 0.3s, padding 0.3s;
@@ -231,7 +236,7 @@
         }
 
         #nav .logo {
-            margin-left: 1em;
+            margin: -0.375em 0;
         }
 
         #nav .menu {
@@ -255,14 +260,15 @@
         }
         
 
-        #nav.scrolled .logo a {
-            color: white;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        #nav.scrolled .logo img {
+            content: url("images/1SQM_logo_black.png");
         }
+
         #nav .logo img {
-            width: 60px;
-            border: none; /* Ensure no border is applied */
+            width: 160px; /* 4x the original size, adjust if needed */
+            border: none;
             transition: opacity 0.3s;
+            vertical-align: middle;
         }
 
         #rotate-text {
@@ -476,7 +482,7 @@
             <!-- Nav -->
             <nav id="nav" class="custom-font2">
                 <div class="logo">
-                    <a href="index.html"  style="font-size: 2em;">1SQM</a>
+                    <a href="index.html"><img src="images/1SQM_logo_white.png"></a>
                 </div>
                 <ul class="menu">
                     <li><a href="about.html">About us</a></li>
@@ -773,10 +779,13 @@
     <script>
         window.addEventListener('scroll', function() {
             var nav = document.getElementById('nav');
+            var logo = nav.querySelector('.logo img');
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
+                logo.src = "images/1SQM_logo_black.png";
             } else {
                 nav.classList.remove('scrolled');
+                logo.src = "images/1SQM_logo_white.png";
             }
         });
     </script>
