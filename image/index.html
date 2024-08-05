@@ -437,29 +437,65 @@
     } 
 
     #inspiration-section {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 0;
-}
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
 
-.inspiration-carousel-container {
-    width: 100%;
-    overflow: hidden;
-    padding: 20px 0;
-}
+    .inspiration-carousel-container {
+        width: 100%;
+        overflow: hidden;
+        padding: 20px 0;
+    }
 
-.inspiration-carousel {
-    display: flex;
-    width: 200%; /* Adjust based on the number of images */
-}
+    .inspiration-carousel {
+        display: flex;
+        width: 200%; /* Adjust based on the number of images */
+    }
 
-.inspiration-carousel-item {
-    flex: 0 0 calc(16.666% - 20px); /* For 6 items per carousel */
-    margin: 10px;
-    height: 150px; /* Adjust as needed */
-    object-fit: cover;
-    border-radius: 5px;
-}
+    .inspiration-carousel-item {
+        flex: 0 0 calc(16.666% - 20px); /* For 6 items per carousel */
+        margin: 10px;
+        height: 150px; /* Adjust as needed */
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .inner-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+        #header .inner header h1,
+        #nav,
+        #main,
+        #footer,
+        input,
+        textarea,
+        button,
+        .button,
+        input[type="submit"],
+        input[type="reset"] {
+            font-family: 'LibreBodoni', serif;
+        }
+
+        #header .inner header h1,
+        #nav ul li a,
+        .major h2,
+        .col-6 h2,
+        .col-6 h3 {
+            font-family: 'LibreBodoniBold', serif;
+        }
+
+        button, .button, input[type="submit"], input[type="reset"] {
+            font-family: 'LibreBodoni', serif;
+            font-weight: normal;
+        }
+
+        #four .col-4 h3 {
+            margin-bottom: 20px; /* Adjust this value as needed */
+        }
 
         </style>
         </style>
@@ -550,8 +586,8 @@
 		<!-- Banner -->
         <section id="banner">
             <header>
-                <h2>Our <strong>Top Sellers</strong></h2>
-                <p>Browse some of our most popular products.</p></header>
+                <h2 class="custom-font">Our <strong>Top Sellers</strong></h2>
+                <p class="custom-font2">Browse some of our most popular products.</p></header>
             </section>				
 
 
@@ -590,25 +626,26 @@
 
 				<section id="four" class="wrapper style1 special fade-up">
 					<div class="container">
+                        <div class="inner-container">
 						<header class="major">
-							<h2>Our <strong>Services</strong></h2>
+							<h2 class="custom-font">Our <strong>Services</strong></h2>
 						</header>
 						<div class="box alt">
 							<div class="row gtr-uniform">
 								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-1">
 									<img src="images/maintenance.png" alt="Installation" style="width: 70px; height: auto; margin-bottom: 10px;">
-									<h3>Installation</h3>
-									<p style="color: black">We handle every detail, from initial measurement to the final fitting, guaranteeing a perfect finish every time.</p>
+									<h3 class="custom-font">Installation</h3>
+									<p style="color: black; text-align: left;" class="custom-font2">We handle every detail, from initial measurement to the final fitting, guaranteeing a perfect finish every time.</p>
 								</section>
 								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-2">
 									<img src="images/sanding.png" alt="Sand & Finish" style="width: 70px; height: auto; margin-bottom: 10px;">
-									<h3>Sand & Finish</h3>
-									<p style="color: black">We use top-quality equipment and products to restore the natural beauty of your floors, providing a smooth and polished look that lasts.</p>
+									<h3 class="custom-font">Sand & Finish</h3>
+									<p style="color: black; text-align: left;" class="custom-font2">We use top-quality equipment to restore the natural beauty of your floors, providing a smooth and polished look that lasts.</p>
 								</section>
 								<section class="col-4 col-6-medium col-12-xsmall fade-up-element fade-up-delay-3">
 									<img src="images/maintenance (1).png" alt="Maintenance & Care" style="width: 70px; height: auto; margin-bottom: 10px;">
-									<h3>Maintenance & Care</h3>
-									<p style="color: black">We provide ongoing care to keep your timber floors looking new and lasting longer.</p>
+									<h3 class="custom-font">Maintenance & Care</h3>
+									<p style="color: black; text-align: left;" class="custom-font2">We provide ongoing care to keep your timber floors looking new and lasting longer.</p>
 								</section>
 							</div>
 						</div>
@@ -617,13 +654,14 @@
 								<li><a href="services.html" class="button fade-up-element fade-up-delay-4">Find out more</a></li>
 							</ul>
 						</footer>
+                    </div>
 					</div>
 				</section>
 
                 <section id="inspiration-section">
-                    <p style="text-align: center;">Looking for inspiration?</p>
+                    <p style="text-align: center;" class="custom-font2">Looking for inspiration?</p>
                     <header>
-                        <h2 style="text-align: center;">Browse some of our <strong>favourite</strong> projects.</h2>
+                        <h2 style="text-align: center;" class="custom-font">Browse our <strong>favourite</strong> projects.</h2>
                     </header>
                     <div class="inspiration-carousel-container">
                         <div class="inspiration-carousel" id="carousel-1">
@@ -667,8 +705,8 @@
                     <div class="container" style="display: flex; justify-content: space-between; align-items: flex-start;">
                         <div style="flex: 1; padding-right: 40px;">
                             <header>
-                                <h2 style="margin-top: 50px; text-align: left;">Get in <strong>touch.</strong></h2>
-                                <p style="text-align: left;">Describe your needs and one of our team members will be in contact to assist you.</p>
+                                <h2 style="margin-top: 50px; text-align: left;" class="custom-font">Get in <strong>touch.</strong></h2>
+                                <p style="text-align: left;" class="custom-font2">Describe your needs and one of our team members will be in contact to assist you.</p>
                             </header>
                             <ul class="actions" style="text-align: left;">
                                 <li><input type="submit" value="Send Message" class="primary" /></li>
@@ -707,11 +745,11 @@
             </div>
             <div>
                 <ul class="copyright">
-                    <li>&copy; One Square Metre. All rights reserved.</li>
+                    <li class="custom-font2">&copy; One Square Metre. All rights reserved.</li>
                 </ul>
             </div>
             <div>
-                <p>
+                <p class="custom-font2">
                     Level 16, 1 Collins St, VIC 3000<br>
                     +61 396 541 810<br>
                     info@jpcgroup.com
