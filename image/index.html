@@ -497,7 +497,82 @@
             margin-bottom: 20px; /* Adjust this value as needed */
         }
 
-        </style>
+        #why-choose-banner {
+            background-color: white;
+            color: #233642;
+            padding: 40px 20px;
+            font-family: 'LibreBodoni', sans-serif;
+        }
+
+        #why-choose-banner h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .infographic-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .infographic-item {
+            border: 1px solid #233642;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .infographic-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .item-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .item-header i {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #233642;
+        }
+
+        .item-header h3 {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .description {
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-top: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, margin-top 0.3s ease;
+            opacity: 0;
+        }
+
+        .infographic-item.active .description {
+            max-height: 200px; /* Adjust based on your content */
+            margin-top: 15px;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .infographic-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         </style>
   
     </style>
@@ -547,43 +622,41 @@
             </nav>
         </div>
 
-        <section id="values-banner" class="custom-font2">
-            <h2 class="values-heading">Our <strong>Values</strong></h2>
-            <div class="values-content">
-                <div class="values-item">
-                    <img src="images/save-the-world.png" alt="Eco Friendly" class="values-icon">
-                    <p class="values-text">
-                        Our commitment to <strong>eco-friendly</strong> 
-                        materials and processes ensures that your 
-                        beautiful new floors are as <strong>kind to 
-                        the planet</strong> as they are your home.
-                    </p>
+        <section id="why-choose-banner">
+            <h2>Why Choose <strong>1SQM?</strong></h2>
+            <div class="infographic-container">
+                <div class="infographic-item">
+                    <div class="item-header">
+                        <i class="fas fa-cut"></i>
+                        <h3>Cut out the middleman</h3>
+                    </div>
+                    <p class="description">Direct from the mill to your doorstep, ensuring the best prices.</p>
                 </div>
-                <div class="values-item">
-                    <img src="images/customer-service.png" alt="Customer Service" class="values-icon">
-                    <p class="values-text">
-                        We pride ourselves on top-notch 
-                        <strong>craftsmanship</strong> and exceptional 
-                        <strong>customer service,</strong> creating a 
-                        welcoming and satisfying experience for 
-                        <strong>every client.</strong>
-                    </p>
+                <div class="infographic-item">
+                    <div class="item-header">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Eco-friendly timber</h3>
+                    </div>
+                    <p class="description">Our timber is sustainably sourced, supporting responsible forestry practices.</p>
                 </div>
-                <div class="values-item">
-                    <img src="images/expert.png" alt="Expert" class="values-icon">
-                    <p class="values-text">
-                        Trust us to enhance your space with floors 
-                        that are not only <strong>stunning</strong> 
-                        but also <strong>sustainably sourced</strong> 
-                        and <strong>expertly installed.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <a href="about.html">Learn more →</a>
-                    </p>
+                <div class="infographic-item">
+                    <div class="item-header">
+                        <i class="fas fa-tag"></i>
+                        <h3>Price Match Guarantee</h3>
+                    </div>
+                    <p class="description">We offer a price match guarantee to ensure you get the best deal on your timber flooring.</p>
+                </div>
+                <div class="infographic-item">
+                    <div class="item-header">
+                        <i class="fas fa-th"></i>
+                        <h3>Wide Selection</h3>
+                    </div>
+                    <p class="description">Choose from a vast array of timber species, finishes, and grades to suit any style and budget.</p>
                 </div>
             </div>
         </section>
-        
-    
 
-		<!-- Banner -->
+        <!-- Banner -->
         <section id="banner">
             <header>
                 <h2 class="custom-font">Our <strong>Top Sellers</strong></h2>
@@ -699,6 +772,40 @@
                         </ul>
                     </footer>
                 </section>
+
+                <section id="values-banner" class="custom-font2">
+                    <h2 class="values-heading">Our <strong>Values</strong></h2>
+                    <div class="values-content">
+                        <div class="values-item">
+                            <img src="images/save-the-world.png" alt="Eco Friendly" class="values-icon">
+                            <p class="values-text">
+                                Our commitment to <strong>eco-friendly</strong> 
+                                materials and processes ensures that your 
+                                beautiful new floors are as <strong>kind to 
+                                the planet</strong> as they are your home.
+                            </p>
+                        </div>
+                        <div class="values-item">
+                            <img src="images/customer-service.png" alt="Customer Service" class="values-icon">
+                            <p class="values-text">
+                                We pride ourselves on top-notch 
+                                <strong>craftsmanship</strong> and exceptional 
+                                <strong>customer service,</strong> creating a 
+                                welcoming and satisfying experience for 
+                                <strong>every client.</strong>
+                            </p>
+                        </div>
+                        <div class="values-item">
+                            <img src="images/expert.png" alt="Expert" class="values-icon">
+                            <p class="values-text">
+                                Trust us to enhance your space with floors 
+                                that are not only <strong>stunning</strong> 
+                                but also <strong>sustainably sourced</strong> 
+                                and <strong>expertly installed.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <a href="about.html">Learn more →</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
 							
                 <section id="five" class="wrapper style2 special fade"></section>
                 <form action="https://formsubmit.co/e21af56276f202ce8918c6c09852f23d" method="POST" id="contact-form">
@@ -738,6 +845,7 @@
                     </div>
             </form>
         </section>
+
         <!-- Footer -->
         <div id="footer">
             <div>
@@ -941,7 +1049,7 @@
                 const maxScroll = carousel.scrollWidth / 2;
                 newX = Math.max(Math.min(newX, 0), -maxScroll);
 
-                carousel.style.transform = `translateX(${newX}px)`;
+                carousel.style.transform = translateX(${newX}px);
             });
 
             lastScrollTop = scrollTop;
@@ -949,6 +1057,17 @@
 
         window.addEventListener('scroll', updateCarousels, { passive: true });
     });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.infographic-item');
+            
+            items.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+        });
     </script>
 </body>
 </html>
