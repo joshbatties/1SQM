@@ -40,13 +40,14 @@
             position: relative;
             z-index: 3;
             padding: 0 2em;
+            left: -250px;
         }
 
         #header h1 {
             position: relative;
             z-index: 3;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 8px 8px 16px rgba(0, 0, 0, 0.8);
         }
 
         #footer {
@@ -120,6 +121,15 @@
             align-items: center;
             justify-content: flex-start;
             padding-left: 1em;
+        }
+
+        #footer div:first-child a {
+            display: block;
+            text-align: left;
+        }
+
+        #footer div:first-child img {
+            width: 25%;;
         }
 
         #footer div:nth-child(2) {
@@ -377,9 +387,9 @@
         }
 
         #header .inner header h1 {
-            letter-spacing: -6px !important; 
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            
+            letter-spacing: -4px !important; 
+            text-shadow: 8px 8px 16px rgba(0, 0, 0, 0.7);
+            font-size: 5em;
                 }
 
     #values-banner {
@@ -474,7 +484,7 @@
             <div class="inner">
                 <header>
                     <h1 class="custom-font">One Square Metre</h1>
-                    <h2 class="custom-font2">Come to us for: <span id="rotate-text" class="custom-font3"></span></h2>
+                    <h2 class="custom-font2" style="text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8)">Come to us for: <span id="rotate-text" class="custom-font3" style="text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8)"></span></h2>
                 </header>
             </div>
             <!-- Gradient Element -->
@@ -540,7 +550,7 @@
 		<!-- Banner -->
         <section id="banner">
             <header>
-                <h2>Our <strong>Products</strong></h2>
+                <h2>Our <strong>Top Sellers</strong></h2>
                 <p>Browse some of our most popular products.</p></header>
             </section>				
 
@@ -693,7 +703,7 @@
         <!-- Footer -->
         <div id="footer">
             <div>
-                <a href="index.html" class="custom-font" style="font-size: 2em;">1SQM</a>
+                <a href="index.html" class="custom-font" ><img src="images/1SQM_logo_white.png"></a>
             </div>
             <div>
                 <ul class="copyright">
