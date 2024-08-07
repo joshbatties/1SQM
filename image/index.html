@@ -281,6 +281,18 @@
             vertical-align: middle;
         }
 
+        #nav .logo img:hover {
+            content: url("images/1SQM_logo_brown.png");
+        }
+
+        #nav li a:hover {
+            color: rgb(116,89,71);
+        }
+
+        #nav.scrolled li a:hover {
+            color: rgb(116,89,71);
+        }
+
         #rotate-text {
             display: inline-block;
             min-width: 200px; /* Adjust as needed */
@@ -734,7 +746,7 @@
                 <section id="inspiration-section">
                     <p style="text-align: center;" class="custom-font2">Looking for inspiration?</p>
                     <header>
-                        <h2 style="text-align: center;" class="custom-font">Browse our <strong>favourite</strong> projects.</h2>
+                        <h2 style="text-align: center;" class="custom-font">Browse our <strong>recent</strong> projects.</h2>
                     </header>
                     <div class="inspiration-carousel-container">
                         <div class="inspiration-carousel" id="carousel-1">
@@ -773,7 +785,7 @@
                     </footer>
                 </section>
 
-                <section id="values-banner" class="custom-font2">
+                <section id="values-banner" class="custom-font2" style="margin-bottom: 120px;">
                     <h2 class="values-heading">Our <strong>Values</strong></h2>
                     <div class="values-content">
                         <div class="values-item">
@@ -933,16 +945,33 @@
         });
     </script>
     <script>
-        window.addEventListener('scroll', function() {
+        window.addEventListener('load', function() {
             var nav = document.getElementById('nav');
             var logo = nav.querySelector('.logo img');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-                logo.src = "images/1SQM_logo_black.png";
-            } else {
-                nav.classList.remove('scrolled');
-                logo.src = "images/1SQM_logo_white.png";
+            var originalSrc, scrolledSrc;
+
+            function updateLogoSrc() {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                    logo.src = scrolledSrc;
+                } else {
+                    nav.classList.remove('scrolled');
+                    logo.src = originalSrc;
+                }
             }
+
+            window.addEventListener('scroll', updateLogoSrc);
+
+            logo.addEventListener('mouseenter', function() {
+                this.src = "images/1SQM_logo_brown.png";
+            });
+
+            logo.addEventListener('mouseleave', updateLogoSrc);
+
+            // Set initial values
+            originalSrc = "images/1SQM_logo_white.png";
+            scrolledSrc = "images/1SQM_logo_black.png";
+            updateLogoSrc();
         });
     </script>
     <script>
