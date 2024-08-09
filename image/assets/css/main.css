@@ -85,8 +85,8 @@ input, select, textarea {
 	}
 
 	body {
-		background: white;
-		color: black;
+		background: #FAF8F6;
+		color: #140D06;
 		font-size: 15pt;
 		line-height: 1.85em;
 		font-family: 'Source Sans Pro', sans-serif;
@@ -113,7 +113,7 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 400;
-		color: black;
+		color: #140D06;
 		line-height: 1.25em;
 	}
 
@@ -142,7 +142,7 @@ input, select, textarea {
 
 	strong, b {
 		font-weight: 400;
-		color: rgb(116,89,71);
+		color: #2B1D0E;
 	}
 
 	em, i {
